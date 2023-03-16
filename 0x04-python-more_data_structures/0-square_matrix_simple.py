@@ -4,4 +4,3 @@ def square_matrix_simple(matrix=[]):
     for row in matrix:
         new_matrix.append([col**2 for col in row])
     return new_matrix
-            
