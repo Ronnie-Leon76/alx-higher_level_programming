@@ -6,8 +6,8 @@ class Square:
     """Square class"""
     def __init__(self, size=0, position=(0, 0)):
         """Initializes the data"""
-        self.__size = size
-        self.__position = position
+        self.size = size
+        self.position = position
 
     @property
     def size(self):
