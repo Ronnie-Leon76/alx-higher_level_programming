@@ -9,8 +9,9 @@ class Board:
     def __init__(self, size):
         self.size = size
         self.grid = [[0 for i in range(self.size)] for j in range(self.size)]
-        self.solve(0)
-        self.print_board()
+        self.solutions = []
+        self.find_all_solutions()
+        self.print_all_solutions()
 
     def print_board(self):
         sol = []
@@ -41,7 +42,15 @@ class Board:
 
     def solve(self, col):
         if col >= self.size:
-            return True
+            solution = []
+            for i in range(len(self.grid)):
+                for j in range(len(self.grid)):
+                    if self.grid[i][j] == 1:
+                        solution.append([i, j])
+                        break
+            self.solutions.append(solution)
+            return False
+
         for i in range(self.size):
             if (self.is_valid(i, col)):
                 self.grid[i][col] = 1
@@ -51,6 +60,13 @@ class Board:
 
                 self.grid[i][col] = 0
         return False
+
+    def find_all_solutions(self):
+        self.solve(0)
+
+    def print_all_solutions(self):
+        for solution in self.solutions:
+            print(solution)
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
