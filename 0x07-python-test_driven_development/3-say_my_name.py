@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 """Function prints first and last name"""
+
+
 def say_my_name(first_name, last_name=""):
     """
     Function that prints first name and last name
