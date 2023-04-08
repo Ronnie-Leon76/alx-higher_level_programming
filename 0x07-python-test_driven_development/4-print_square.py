@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 """Function that prints a square with the character #"""
+
+
 def print_square(size):
     """
     Function that prints a square with the character #
@@ -16,5 +18,5 @@ def print_square(size):
         raise TypeError("size must be an integer")
     for i in range(size):
         for j in range(size):
-            print("#",end="")
+            print("#", end="")
         print()
