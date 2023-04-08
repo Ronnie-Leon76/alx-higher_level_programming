@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 """Function divides all elements of a matrix"""
+
+
 def matrix_divided(matrix, div):
     """
     Function that divides all elements of a matrix
@@ -10,9 +12,9 @@ def matrix_divided(matrix, div):
         list: matrix
     """
     if not all(isinstance(row, list) for row in matrix):
-        raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
+        raise TypeError("matrix must be a matrix (list of lists)")
     if not all(isinstance(col, (int, float)) for row in matrix for col in row):
-         raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
+        raise TypeError("matrix must be comprise of integers/floats")
     if not all(len(row) == len(matrix[0]) for row in matrix):
         raise ValueError("all rows of the matrix must have the same size")
     if not isinstance(div, (int, float)):
@@ -26,9 +28,8 @@ def matrix_divided(matrix, div):
         for col in row:
             new_elem = round(col / div, 2)
             if round(new_elem, 2) != new_elem:
-                raise ValueError("new matrix elements must be rounded to 2 decimal places")
+                raise ValueError("elements must be rounded to 2 dp")
             new_row.append(new_elem)
         new_matrix.append(new_row)
 
     return new_matrix
-   
