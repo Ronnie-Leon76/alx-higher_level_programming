@@ -5,7 +5,7 @@ from, the specified class
 """
 
 
-def is_kind_of_class(obj, a_class)u:
+def is_kind_of_class(obj, a_class):
     """
     function that checks if an object is an instance of a specified class
     """
