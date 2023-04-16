@@ -3,6 +3,7 @@
 
 
 import json
+import turtle
 
 
 class Base:
@@ -54,4 +55,43 @@ class Base:
         except:
             return []
         return [cls.create(**dictionary) for dictionary in list_dictionaries]
-       
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """serializes to CSV"""
+        filename = cls.__name__ + ".csv"
+        list_dictionaries = [obj.to_dictionary() for obj in list_objs]
+        with open(filename, 'w') as f:
+            f.write(cls.to_json_string(list_dictionaries))
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Deserialize to CSV"""
+        filename = cls.__name__ + ".csv"
+        try:
+            with open(filename, 'r') as f:
+                list_dictionaries = cls.from_json_string(f.read())
+        except:
+            return []
+        return [cls.create(**dictionary) for dictionary in list_dictionaries]
+
+    def draw(list_rectangles, list_squares):
+        """Draw all the Rectangles and Squares"""
+        turtle_ = turtle.Turtle()
+        for rectangle in list_rectangles:
+            turtle_.up()
+            turtle_.goto(rectangle.x, rectangle.y)
+            turtle_.down()
+            for i in range(2):
+                turtle_.forward(rectangle.width)
+                turtle_.left(98)
+                turtle_.forward(rectangle.height)
+                turtle_.down()
+        for square in list_squares:
+            turtle_.up()
+            turtle_.goto(square.x, square.y)
+            turtle_.down()
+            for i in range(4):
+                turtle_.forward(square.size)
+                turtle_.left(90)
+        turtle_.mainloop()
