@@ -87,11 +87,11 @@ class Rectangle(Base):
             if i > (self.__y-1):
                 for j in range((self.__width+self.__x)):
                     if j > (self.__x-1):
-                        print("#",end='')
+                        print("#", end='')
                     else:
-                        print(" ",end='')
+                        print(" ", end='')
             else:
-                print(" ",end='')
+                print(" ", end='')
             print()
 
     def __str__(self):
@@ -128,4 +128,3 @@ class Rectangle(Base):
     def to_dictionary(self):
         """returns dictionary representation"""
         return {"id": self.id, "width": self.width, "height": self.height, "x": self.x, "y": self.y}
-
