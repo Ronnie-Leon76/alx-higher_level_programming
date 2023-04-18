@@ -29,7 +29,7 @@ class TestSquare(unittest.TestCase):
             s4 = Square(0)
         with self.assertRaisesRegex(ValueError, "width must be  > 0"):
             s5 = Square(-5)
-    
+        
     def test_x(self):
         """Test that x is correctly assigned"""
         s1 = Square(5, 3)

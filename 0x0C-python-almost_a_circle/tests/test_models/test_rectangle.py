@@ -64,7 +64,7 @@ class TestRectangle(unittest.TestCase):
             r3 = Rectangle(10, 2, 3, "3")
         with self.assertRaisesRegex(ValueError, "y must be >= 0"):
             r4 = Rectangle(10, 2, 3, -3)
-    
+
     def test_area(self):
         """Test that the area is correctly calculated"""
         r1 = Rectangle(3, 2)
@@ -79,7 +79,9 @@ class TestRectangle(unittest.TestCase):
         r1 = Rectangle(4, 6)
         with patch('sys.stdout', new=StringIO()) as fake_out:
             r1.display()
-            self.assertEqual(fake_out.getvalue(), '####\n####\n####\n####\n####\n####\n')
+            self.assertEqual(fake_out.getvalue(),
+            '####\n####\n####\n####\n####\n####\n'
+            )
         r2 = Rectangle(2, 2)
         with patch('sys.stdout', new=StringIO()) as fake_out:
             r2.display()
@@ -87,7 +89,8 @@ class TestRectangle(unittest.TestCase):
         r3 = Rectangle(3, 2, 2, 2)
         with patch('sys.stdout', new=StringIO()) as fake_out:
             r3.display()
-            self.assertEqual(fake_out.getvalue(), ' \n \n  ###\n  ###\n')
+            self.assertEqual(fake_out.getvalue(),
+            ' \n \n  ###\n  ###\n')
         
     def test_str(self):
         """Test the __str__ method"""
