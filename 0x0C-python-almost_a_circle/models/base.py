@@ -7,8 +7,11 @@ import turtle
 
 
 class Base:
+    """Base Class"""
     __nb_objects = 0
+
     def __init__(self, id=None):
+        """Initialize Data"""
         if id is not None:
             self.id = id
         else:
@@ -17,18 +20,20 @@ class Base:
 
     @staticmethod
     def to_json_string(list_dictionaries):
+        """Dictionary to JSON string"""
         if list_dictionaries is None or list_dictionaries == []:
             return "[]"
         return json.dumps(list_dictionaries)
 
     @staticmethod
     def from_json_string(json_string):
+        """JSON string to dictionary"""
         if json_string is None or json_string == []:
             return []
         return json.loads(json_string)
 
     @classmethod
-    def save_to_file(cls,list_objs):
+    def save_to_file(cls, list_objs):
         """Writes JSON string representation of list_objs to a file"""
         filename = cls.__name__ + ".json"
         list_dictionaries = [obj.to_dictionary() for obj in list_objs]
@@ -39,7 +44,7 @@ class Base:
     def create(cls, **dictionary):
         """returns an instance with all attributed already set"""
         if cls.__name__ == "Rectangle":
-            dummy = cls(1,1)
+            dummy = cls(1, 1)
         elif cls.__name__ == "Square":
             dummy = cls(1)
         dummy.update(**dictionary)
@@ -52,7 +57,7 @@ class Base:
         try:
             with open(filename, 'r') as f:
                 list_dictionaries = cls.from_json_string(f.read())
-        except:
+        except Exception:
             return []
         return [cls.create(**dictionary) for dictionary in list_dictionaries]
 
@@ -71,7 +76,7 @@ class Base:
         try:
             with open(filename, 'r') as f:
                 list_dictionaries = cls.from_json_string(f.read())
-        except:
+        except Exception:
             return []
         return [cls.create(**dictionary) for dictionary in list_dictionaries]
 
