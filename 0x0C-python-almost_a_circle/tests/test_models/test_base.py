@@ -74,7 +74,7 @@ class TestBase(unittest.TestCase):
         self.assertEqual(str(list_rectangles_output[0]), "[Rectangle] (1) 2/8 - 10/7")
         self.assertEqual(str(list_rectangles_output[1]), "[Rectangle] (2) 0/0 - 2/4")
         s1 = Square(10, 2, 8)
-        s2 = Square(2. 4)
+        s2 = Square(2, 4)
         Square.save_to_file([s1, s2])
         list_squares_output = Square.load_from_file()
         self.assertEqual(str(list_squares_output[0]), "[Square] (3) 2/8 - 10")
