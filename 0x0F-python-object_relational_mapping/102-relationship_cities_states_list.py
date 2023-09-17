@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Script that lists all State objects, and corresponding City objects,
+Script that lists all City objects from the database hbtn_0e_101_usa
 """
 
 from sys import argv
@@ -12,7 +12,7 @@ from relationship_city import City
 
 if __name__ == "__main__":
     """
-    Function that lists all State objects, and corresponding City objects,
+    Function that lists all City objects from the database hbtn_0e_101_usa
     """
 
     engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'
@@ -23,8 +23,7 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    for state in session.query(State).order_by(State.id).all():
-        print("{}: {}".format(state.id, state.name))
-        for city in sorted(state.cities, key=lambda city: city.id):
-            print("    {}: {}".format(city.id, city.name))
+    for city, state in session.query(City, State).filter(
+            City.state_id == State.id).order_by(City.id).all():
+        print("{}: {} -> {}".format(city.id, city.name, state.name))
     session.close()
