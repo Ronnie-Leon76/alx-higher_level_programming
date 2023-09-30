@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Script takes 2 arguments in order to solve this challenge. 
+Script takes 2 arguments in order to solve this challenge.
 The first argument will be the repository name.
 The second argument will be the owner name.
 """
