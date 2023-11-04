@@ -1,0 +1,22 @@
+#!/home/adeptschneiderthedev/.nvm/versions/node/v18.17.1/bin/node
+const request = require('request');
+const url = process.argv[2];
+
+request(url, function (err, response, body) {
+  if (err) {
+    console.log(err);
+  } else {
+    let dict = {};
+    const json = JSON.parse(body);
+    for (let i = 0; i < json.length; i++) {
+      if (json[i].completed === true) {
+        if (dict[json[i].userId] === undefined) {
+          dict[json[i].userId] = 1;
+        } else {
+          dict[json[i].userId] += 1;
+        }
+      }
+    }
+    console.log(dict);
+  }
+});
